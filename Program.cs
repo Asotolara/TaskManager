@@ -48,7 +48,7 @@ TaskItem original = new TaskItem { Title = "Original Task", IsCompleted = false 
 TaskItem copy = original;
 copy.Title = "Modified Task";
 
-Console.WriteLine(original.Title); // what do you expect this to print?
+Console.WriteLine(original.Title); 
 
 async Task<List<TaskItem>> GetIncompleteTasksAsync(List<TaskItem> allTasks)
 {
@@ -58,3 +58,15 @@ async Task<List<TaskItem>> GetIncompleteTasksAsync(List<TaskItem> allTasks)
 
 var result = await GetIncompleteTasksAsync(tasks);
 Console.WriteLine($"Found {result.Count} incomplete tasks");
+
+/// Interface Instatiation
+ITaskRepository repo = new TaskRepository();
+
+repo.Add(new TaskItem{Title = "Dummy Task", IsCompleted = true});
+repo.Add(new TaskItem{Title = "Another Dummy Task", IsCompleted = false, DueDate = DateTime.Now.AddDays(3)});
+
+var allTasks = repo.GetAll();
+var allIncompleteTasks = repo.GetIncomplete();
+
+Console.WriteLine($"All total tasks: {allTasks.Count}");
+Console.WriteLine($"Total imcomplete tasks: {allIncompleteTasks.Count}");
