@@ -34,7 +34,7 @@ if (earliestTask != null)
 }
 
 
-/*
+
 TaskItem task1 = new TaskItem
 {
     Title = "Finish project report",
@@ -44,13 +44,12 @@ TaskItem task1 = new TaskItem
 
 
 Console.WriteLine($"Task: {task1.Title}, is it completed? {task1.IsCompleted}, due on: {task1.DueDate?.ToString() ?? "No due date"}");
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TaskItem original = new TaskItem { Title = "Original Task", IsCompleted = false };
 TaskItem copy = original;
 copy.Title = "Modified Task";
 
 Console.WriteLine(original.Title); // what do you expect this to print?
-*/
+
 async Task<List<TaskItem>> GetIncompleteTasksAsync(List<TaskItem> allTasks)
 {
     await Task.Delay(500); // pretend this is a database call
